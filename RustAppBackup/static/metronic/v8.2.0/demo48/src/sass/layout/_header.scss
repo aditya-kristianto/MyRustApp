@@ -1,0 +1,152 @@
+//
+// Layout
+//
+
+// General mode
+.app-header {
+    .app-header-primary {
+        .custom-btn {
+            @include button-custom-variant(
+                $color: null, 
+                $icon-color: var(--#{$prefix}gray-600), 
+                $border-color: null, 
+                $bg-color: var(--#{$prefix}app-header-primary-custom-btn-bg-color), 
+                $color-active: null, 
+                $icon-color-active: var(--#{$prefix}primary), 
+                $border-color-active: null, 
+                $bg-color-active: null, 
+            );	
+        }
+    }
+}
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+    .app-header {
+        .app-header-primary {
+            .header-search {
+                .search-input {
+                    background: var(--#{$prefix}app-header-primary-search-bg-color);
+                    border-color: var(--#{$prefix}app-header-primary-search-bg-color);
+    
+                    @include placeholder(var(--#{$prefix}gray-500));
+                }
+    
+                .search-icon {						 				 			 
+                    color: var(--#{$prefix}gray-600); 
+                }
+            }            
+        }
+
+        .app-header-secondary {
+            background: var(--#{$prefix}app-header-secondary-base-bg-color);
+	        height: $app-header-secondary-base-height;
+
+            .app-header-menu {
+                .menu {
+                    // Root links
+                    > .menu-item {
+                        // Customize menu link default state       
+                        @include menu-link-default-state( 
+                            $title-color: var(--#{$prefix}gray-600), 
+                            $icon-color: null, 
+                            $bullet-color: null, 
+                            $arrow-color: null, 
+                            $bg-color: null, 
+                            $all-links: false
+                        );
+        
+                        // Customize menu link hover state       
+                        @include menu-link-hover-state( 
+                            $title-color: var(--#{$prefix}white), 
+                            $icon-color: null, 
+                            $bullet-color: null, 
+                            $arrow-color:  null, 
+                            $bg-color: transparent, 
+                            $all-links: false
+                        );
+        
+                        // Customize menu link here state       
+                        @include menu-link-here-state( 
+                            $title-color: var(--#{$prefix}white), 
+                            $icon-color: null,
+                            $bullet-color: null, 
+                            $arrow-color:  null,
+                            $bg-color: transparent, 
+                            $all-links: false
+                        );
+        
+                        // Customize menu link show state       
+                        @include menu-link-show-state( 
+                            $title-color: null, 
+                            $icon-color: null, 
+                            $bullet-color: null, 
+                            $arrow-color: null, 
+                            $bg-color: transparent, 
+                            $all-links: false
+                        );
+        
+                        // Customize menu link active state       
+                        @include menu-link-active-state( 
+                            $title-color: var(--#{$prefix}white), 
+                            $icon-color: null, 
+                            $bullet-color: null, 
+                            $arrow-color: null, 
+                            $bg-color: transparent, 
+                            $all-links: false
+                        );
+        
+                        > .menu-link:first-child {
+                            padding-left: 0 !important;
+                        }	
+                        
+                        > .menu-link {					 
+                            margin-right: 1.75rem;				
+        
+                            .menu-title {
+                                font-size: 1.15rem;
+                                font-weight: $font-weight-bold;							
+                            }
+                        }
+                    }
+                }
+            } 
+        }        
+    }
+}
+
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+	.app-header {
+        .app-header-primary {            
+	        border-bottom: var(--#{$prefix}app-header-primary-base-border-bottom);             
+        } 
+
+        .app-header-secondary {            
+	        height: $app-header-secondary-base-height-mobile;             
+        }  
+
+		.header-search {           
+			.search-toggle-mobile {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @include border-radius(6px);
+                width: 35px;
+                height: 35px;
+				cursor: pointer;
+
+				@include button-custom-variant(
+					$color: null, 
+					$icon-color: var(--#{$prefix}gray-600), 
+					$border-color: null, 
+					$bg-color: var(--#{$prefix}app-header-primary-custom-btn-bg-color), 
+					$color-active: null, 
+					$icon-color-active: $primary, 
+					$border-color-active: null, 
+					$bg-color-active: null
+				); 
+			}	
+		}
+	}
+}

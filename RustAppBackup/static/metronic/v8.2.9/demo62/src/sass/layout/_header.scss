@@ -1,0 +1,13 @@
+//
+// Header
+//
+
+
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+	.app-header {
+		.app-page-entry {
+			display: none !important;
+		}
+	}
+}	

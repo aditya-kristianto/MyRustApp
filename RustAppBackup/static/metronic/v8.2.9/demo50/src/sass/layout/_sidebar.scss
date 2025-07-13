@@ -1,0 +1,179 @@
+//
+// Sidebar
+//
+
+
+// Sidebar
+.app-sidebar {
+	.hover-scroll-y {        
+		@include scrollbar-color(transparent, lighten(#262830, 6%));
+	}
+
+	.menu-content {
+		color: $gray-600;
+	}
+}
+
+// Sidebar primary
+.app-sidebar-primary {
+	display: flex;
+	flex-direction: column;
+
+	[data-kt-app-sidebar-secondary-enabled="true"] & {
+		border-right: var(--#{$prefix}app-separator-border);
+	}
+
+	// Root links
+	.app-sidebar-menu {
+		align-items: stretch;
+		justify-content: center;
+		
+		.menu {
+			> .menu-item {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				> .menu-link {
+					padding: 0;
+					width: $app-sidebar-primary-menu-size;
+					height: $app-sidebar-primary-menu-size;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					flex-shrink: 0;
+					flex: 0 0 auto;
+					@include border-radius($border-radius);			
+
+					.menu-icon {
+						i {
+							line-height: 0;
+						}	
+					}	
+				}
+
+				@include menu-link-default-state( 
+					$title-color:  null,
+					$icon-color:  $gray-700, 
+					$bullet-color:  null,
+					$arrow-color:  null,
+					$bg-color: null,
+					$all-links: false
+				);
+				
+				@include menu-link-hover-state( 
+					$title-color: null,
+					$icon-color: $white, 
+					$bullet-color: null,
+					$arrow-color: null,
+					$bg-color: null,
+					$all-links: false
+				);
+				
+				@include menu-link-show-state( 
+					$title-color: null,
+					$icon-color: $white,
+					$bullet-color:null,
+					$arrow-color: null,
+					$bg-color: null,
+					$all-links: false
+				);
+				
+				@include menu-link-here-state( 
+					$title-color: null,
+					$icon-color: $primary, 
+					$bullet-color: null,
+					$arrow-color: null,
+					$bg-color: #191C2F,
+					$all-links: false
+				);
+
+				@include menu-link-active-state( 
+					$title-color: null,
+					$icon-color: $primary, 
+					$bullet-color: null,
+					$arrow-color: null,
+					$bg-color: #191C2F,
+					$all-links: false
+				);
+			}
+		}
+	}
+}
+
+// Secondary primary
+.app-sidebar-secondary {		
+	.menu {
+		.menu-item {
+			@include menu-link-default-state( 
+				$title-color:  $gray-600, 
+				$icon-color:  $gray-600, 
+				$bullet-color:  $gray-600, 
+				$arrow-color:  $gray-600,
+				$bg-color: null,
+				$all-links: true
+			);
+			
+			@include menu-link-hover-state( 
+				$title-color:  $white, 
+				$icon-color:  $white, 
+				$bullet-color:  $white, 
+				$arrow-color:  $white, 
+				$bg-color: null,
+				$all-links: true
+			);
+			
+			@include menu-link-show-state( 
+				$title-color:  $white, 
+				$icon-color:  $white, 
+				$bullet-color:  $white, 
+				$arrow-color:  $white, 
+				$bg-color: null,
+				$all-links: true
+			);
+			
+			@include menu-link-here-state( 
+				$title-color:  $white, 
+				$icon-color:  $white, 
+				$bullet-color:  $white, 
+				$arrow-color:  $white, 
+				$bg-color:  null,
+				$all-links: true
+			);
+
+			@include menu-link-active-state( 
+				$title-color:  $white, 
+				$icon-color:  $white, 
+				$bullet-color:  $white, 
+				$arrow-color:  $white, 
+				$bg-color: $primary,
+				$all-links: true
+			);
+		}
+	}
+}
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+	[dir="rtl"] {
+        .app-sidebar-secondary-toggle {
+            i {
+                transform: rotateZ(180deg);
+            }
+
+            &.active i {
+                transform: rotateZ(0deg) !important;
+            }
+        }
+    }
+}	
+
+// Dark mode
+@include color-mode(dark) {
+	// Desktop mode
+	@include media-breakpoint-up(lg) {
+		.app-sidebar {
+			border-right: var(--#{$prefix}app-separator-border);	
+		}
+	}
+}

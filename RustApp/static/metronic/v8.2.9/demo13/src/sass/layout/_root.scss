@@ -1,0 +1,53 @@
+//
+// Root
+//
+
+// Light mode
+@include color-mode(light) {
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg};
+
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color};
+
+    // Header
+    --#{$prefix}header-default-bg-color: #{get($header-config, fixed, box-shadow)};
+
+    // Toolbar
+    --#{$prefix}toolbar-fixed-bg-color: #{get($toolbar-config, fixed, bg-color)};
+    --#{$prefix}toolbar-fixed-box-shadow: #{get($toolbar-config, fixed, box-shadow)};
+    --#{$prefix}toolbar-fixed-border-top: #{get($toolbar-config, fixed, border-top)};
+
+    // Aside
+    --#{$prefix}aside-scrollbar-color: #{get($aside-config, scrollbar-color)};
+    --#{$prefix}aside-scrollbar-hover-color: #{get($aside-config, scrollbar-hover-color)};
+    --#{$prefix}aside-box-shadow: #{get($aside-config, box-shadow)};
+
+    // Footer
+    --#{$prefix}footer-box-shadow: #{get($footer-config, bg-color)};
+}
+
+// Dark mode
+@include color-mode(dark) {
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg-dark};
+
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color-dark};
+
+    // Header
+    --#{$prefix}header-default-bg-color: #{get($header-config, fixed, box-shadow-dark)};
+
+    // Toolbar
+    --#{$prefix}toolbar-fixed-bg-color: #{get($toolbar-config, fixed, bg-color-dark)};
+    --#{$prefix}toolbar-fixed-box-shadow: #{get($toolbar-config, fixed, box-shadow-dark)};
+    --#{$prefix}toolbar-fixed-border-top: #{get($toolbar-config, fixed, border-top-dark)};
+
+    // Aside
+    --#{$prefix}aside-scrollbar-color: #{get($aside-config, scrollbar-color-dark)};
+    --#{$prefix}aside-scrollbar-hover-color: #{get($aside-config, scrollbar-hover-color-dark)};
+    --#{$prefix}aside-box-shadow: #{get($aside-config, box-shadow-dark)};
+
+    // Footer
+    --#{$prefix}footer-box-shadow: #{get($footer-config, bg-color-dark)};
+}

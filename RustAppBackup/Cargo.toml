@@ -1,0 +1,228 @@
+bench = []
+test = []
+example = []
+
+[[bin]]
+path = "src/bin/auth/main.rs"
+name = "auth"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[bin]]
+path = "src/bin/consumer/main.rs"
+name = "consumer"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[bin]]
+path = "src/bin/oauth/main.rs"
+name = "oauth"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[bin]]
+path = "src/bin/producer/main.rs"
+name = "producer"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[bin]]
+path = "src/bin/scheduler/main.rs"
+name = "scheduler"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[bin]]
+path = "src/bin/stock/main.rs"
+name = "stock"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[bin]]
+path = "src/bin/user/main.rs"
+name = "user"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[bin]]
+path = "src/bin/uuid/main.rs"
+name = "uuid"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[bin]]
+path = "src/bin/web/main.rs"
+name = "web"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[[bin]]
+path = "src/main.rs"
+name = "rust"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+
+[package]
+name = "rust"
+edition = "2021"
+version = "0.0.1"
+authors = ["Aditya Kristianto <kristianto.aditya@gmail.com>"]
+
+[dependencies]
+actix = "0.13.5"
+actix-cors = "0.7.0"
+actix-files = "0.6.6"
+actix-governor = "0.8.0"
+actix-http = "3.9.0"
+actix-limitation = "0.5.1"
+actix-multipart = "0.7.2"
+actix-ratelimit = "0.3.1"
+actix-rt = "2.10.0"
+actix-service = "2.0.2"
+actix-session = "0.10.1"
+actix-swagger = "0.3.1"
+actix-utils = "3.0.1"
+actix-web = "4.9.0"
+actix-web-actors = "4.3.1+deprecated"
+actix-web-httpauth = "0.8.2"
+askama = "0.12.1"
+async-std = "1.13.0"
+bson = "2.13.0"
+bytes = "1.10.1"
+calamine = "0.26.1"
+chrono = "0.4.40"
+dotenv = "0.15.0"
+dotenv_codegen = "0.15.0"
+env_logger = "0.11.6"
+futures = "0.3.31"
+futures-io = "0.3.31"
+futures-util = "0.3.31"
+html-escape = "0.2.13"
+http = "1.2.0"
+json = "0.12.4"
+kafka = "0.10.0"
+log = "0.4.26"
+mime = "0.3.17"
+mongodb = "3.2.2"
+oauth2 = "4.4.2"
+openapi = "0.1.5"
+openssl = "0.10.71"
+pin-utils = "0.1.0"
+postgres-types = "0.2.9"
+ppv-lite86 = "0.2.20"
+rand = "0.8.5"
+rand_chacha = "0.3.1"
+rdkafka = "0.37.0"
+redis = "0.27.6"
+regex = "1.11.1"
+reqwest = "0.12.12"
+rust_decimal = "1.36.0"
+scraper = "0.22.0"
+serde_json = "1.0.140"
+serde_yaml = "0.9.34+deprecated"
+signal-hook-registry = "1.4.2"
+swagger = "6.5.0"
+tempfile = "3.18.0"
+tera = "1.20.0"
+tinyvec = "1.9.0"
+tokio-postgres = "0.7.13"
+url = "2.5.4"
+validator = "0.19.0"
+value-bag = "1.10.0"
+waitgroup = "0.1.2"
+warp = "0.3.7"
+webp = "0.3.0"
+wrap = "0.1.0"
+
+[dependencies.cmake]
+version = "0.1.54"
+optional = true
+
+[dependencies.diesel]
+version = "2.2.8"
+features = ["postgres"]
+
+[dependencies.postgres]
+version = "0.19.10"
+features = ["with-chrono-0_4", "with-uuid-1"]
+
+[dependencies.serde]
+version = "1.0.218"
+features = ["derive"]
+
+[dependencies.tokio]
+version = "1.44.0"
+features = ["full"]
+
+[dependencies.utoipa]
+version = "4.2.3"
+features = ["actix_extras", "openapi_extensions"]
+
+[dependencies.utoipa-swagger-ui]
+version = "7.1.0"
+features = ["actix-web"]
+
+[dependencies.uuid]
+version = "1.15.1"
+features = ["v4", "fast-rng", "macro-diagnostics"]
+
+[target.'cfg(target_arch = "arm")'.dependencies]
+
+[target.'cfg(target_arch = "arm")'.dev-dependencies]
+
+[target.'cfg(target_arch = "arm")'.build-dependencies]
+
+[target.aarch64-unknown-linux-musl]
+linker = "aarch64-alpine-linux-musl-gcc"
+rustflags = ["-C", "target-feature=-crt-static"]
+
+[target.x86_64-unknown-linux-musl]
+linker = "x86_64-alpine-linux-musl-gcc"
+rustflags = ["-C", "target-feature=-crt-static"]
+
+[lib]
+path = "src/lib.rs"
+name = "rust"
+plugin = false
+proc-macro = false
+edition = "2021"
+required-features = []
+crate-type = ["rlib"]
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+incremental = true
+strip = "debuginfo"
+
+[profile.release.package]
+
+[profile.dev]
+opt-level = 0
+debug = 0
+incremental = true
+strip = false
+
+[profile.dev.package]

@@ -1,0 +1,7 @@
+[build]
+rustc-wrapper = "sccache"
+rustflags = ["-C", "link-arg=-lc++"]
+target = "x86_64-apple-darwin"
+
+[target.x86_64-apple-darwin]
+linker = "clang++"

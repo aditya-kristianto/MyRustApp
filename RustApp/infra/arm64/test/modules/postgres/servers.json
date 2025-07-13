@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "1": {
+        "Name": "My Postgres Server",
+        "Group": "Servers",
+        "Host": "172.18.0.1",
+        "Port": 5432,
+        "Username": "aditya.kristianto",
+        "Password": "my secret password",
+        "MaintenanceDB": "postgres",
+        "SavePassword": true
+    }
+  }
+}

@@ -1,0 +1,35 @@
+-- Your SQL goes here
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE IF NOT EXISTS transactions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    no INTEGER NOT NULL,
+    kode_saham VARCHAR(5) NOT NULL,
+    nama_perusahaan VARCHAR(100) NOT NULL,
+    remarks VARCHAR(30) NOT NULL,
+    sebelumnya INTEGER NOT NULL,
+    open_price INTEGER NOT NULL,
+    tanggal_perdagangan_terakhir DATE NOT NULL,
+    first_trade INTEGER NOT NULL,
+    tertinggi INTEGER NOT NULL,
+    terendah INTEGER NOT NULL,
+    penutupan INTEGER NOT NULL,
+    selisih INTEGER NOT NULL,
+    volume INTEGER NOT NULL,
+    nilai INTEGER NOT NULL,
+    frekuensi INTEGER NOT NULL,
+    index_individual INTEGER NOT NULL,
+    offer INTEGER NOT NULL,
+    offer_volume INTEGER NOT NULL,
+    bid INTEGER NOT NULL,
+    bid_volume INTEGER NOT NULL,
+    listed_shares INTEGER NOT NULL,
+    tradeble_shares INTEGER NOT NULL,
+    weight_for_index INTEGER NOT NULL,
+    foreign_sell INTEGER NOT NULL,
+    foreign_buy INTEGER NOT NULL,
+    non_regular_volume INTEGER NOT NULL,
+    non_regular_value INTEGER NOT NULL,
+    non_regular_frequency INTEGER NOT NULL,
+    UNIQUE (no, kode_saham, tanggal_perdagangan_terakhir)
+);

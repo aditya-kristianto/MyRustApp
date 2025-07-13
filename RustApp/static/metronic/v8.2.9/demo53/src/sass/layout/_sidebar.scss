@@ -1,0 +1,29 @@
+//
+// Sidebar
+//
+
+// General mode
+.app-sidebar {   
+    margin-top: $app-content-padding-y;     
+    margin-left: 0 !important;               
+}
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+    .app-sidebar {    
+        .hover-scroll-y {
+            @include scrollbar-color(var(--#{$prefix}gray-200), var(--#{$prefix}gray-300));    
+        }
+    }    
+}
+
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+    .app-sidebar {  
+        margin-top: 0;         
+        padding-top: $app-content-padding-y;       
+        display: flex;
+        align-items: center;  
+        background-color: var(--#{$prefix}sidebar-navbar-bg-color);   
+    } 
+}

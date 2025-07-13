@@ -1,0 +1,14 @@
+//
+// Content
+//
+
+// General mode
+.app-sidebar + .app-main {
+	margin-top: $app-sidebar-base-gap-top;
+}
+
+.app-toolbar {
+	& + .app-content {
+		padding-top: 0;	
+	}
+}

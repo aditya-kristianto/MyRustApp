@@ -1,0 +1,15 @@
+//
+// Custom widget 1
+//
+
+// General
+.custom-widget-1 {
+	
+}
+
+// Dark mode
+@include color-mode(dark) {
+	.custom-widget-1 {
+	
+	}
+}

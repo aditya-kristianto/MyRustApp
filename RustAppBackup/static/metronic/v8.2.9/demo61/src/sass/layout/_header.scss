@@ -1,0 +1,90 @@
+//
+// Header
+//
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+	.app-header {
+		.btn-custom {
+			@include button-custom-variant(
+				$color: null, 
+				$icon-color: var(--#{$prefix}gray-700), 
+				$border-color: null, 
+				$bg-color: var(--#{$prefix}gray-200), 
+				$color-active: null, 
+				$icon-color-active: var(--#{$prefix}primary),  
+				$border-color-active: null, 
+				$bg-color-active: null, 
+			);				 
+		}
+
+		.app-header-menu {
+			.menu {
+				> .menu-item {
+					margin-right: 0.5rem;   
+
+					> .menu-link {
+						.menu-title {
+							font-weight: $font-weight-bold;
+							font-size: 1.1rem;
+						}
+					}
+
+					@include menu-link-default-state( 
+						$title-color: var(--#{$prefix}gray-700), 
+						$icon-color: null, 
+						$bullet-color: null, 
+						$arrow-color: null,
+						$bg-color: null,
+						$all-links: false
+					);
+					
+					@include menu-link-hover-state( 
+						$title-color: var(--#{$prefix}gray-900), 
+						$icon-color: null, 
+						$bullet-color: null, 
+						$arrow-color: null, 
+						$bg-color: null,
+						$all-links: false
+					);
+					
+					@include menu-link-show-state( 
+						$title-color: var(--#{$prefix}gray-900), 
+						$icon-color: null, 
+						$bullet-color: null, 
+						$arrow-color: null, 
+						$bg-color: null,
+						$all-links: false
+					);
+		
+					@include menu-link-here-state( 
+						$title-color: var(--#{$prefix}gray-900), 
+						$icon-color: null,
+						$bullet-color: null, 
+						$arrow-color: null,
+						$bg-color: var(--#{$prefix}gray-200),
+						$all-links: false
+					);
+		
+					@include menu-link-active-state( 
+						$title-color: var(--#{$prefix}gray-900), 
+						$icon-color: null, 
+						$bullet-color: null, 
+						$arrow-color: null, 
+						$bg-color: null,
+						$all-links: false
+					); 
+				}         
+			}        
+		} 
+	}
+} 
+
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+	.app-header {
+		[data-kt-app-header-fixed-mobile="true"] & {
+			box-shadow: var(--#{$prefix}box-shadow-sm), 	
+		}
+	}
+}

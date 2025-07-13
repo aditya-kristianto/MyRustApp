@@ -1,0 +1,72 @@
+//
+// Layout Config
+//
+
+// Root font Sizes
+$root-font-size:                                    13px; // Root font size for desktop mode
+$root-font-size-lg:                             	13px; // Root font size for tablet mode
+$root-font-size-md:                             	12px; // Root font size for mobile mode
+
+
+// Page  background Color
+$page-bg:                                         #F3F6F9 !default;
+$page-bg-dark:                                    $coal-400 !default;
+
+// App blank bg color
+$app-blank-bg-color: 								$white;
+$app-blank-bg-color-dark: 							$coal-400;
+
+// Content Spacing
+$content-spacing: (
+	desktop: 30px, // Padding for desktop mode
+	tablet-and-mobile: 15px // Padding for tablet and mobile modes
+) !default;
+
+// Header
+$header-config: (
+	bg-color: #0D0F17,	 
+	bg-color-dark: #0D0F17,	 
+	menu-bg-color: #000000,
+	menu-bg-color-dark: #000000,
+	menu-link-color: #6E6C81,
+	menu-link-color-dark: #6E6C81,
+	menu-link-active-bg-color: #1E2027,
+	menu-link-active-bg-color-dark: #1E2027,
+	z-index: 97,                                                  
+	box-shadow: 0px 10px 30px 0px rgba(82,63,105,0.08),
+	box-shadow-dark: none,	
+	sticky-height: 70px,
+	btn-nav-color: #6E6C81,
+	btn-nav-color-dark: #6E6C81,
+	btn-nav-bg-color: #090A0F,
+	btn-nav-bg-color-dark: #090A0F,
+	btn-nav-icon-color: #6E6C81,
+	btn-nav-icon-color-dark: #6E6C81,
+	btn-nav-border-color: #313131,
+	btn-nav-border-color-dark: #313042,
+	btn-nav-border-color-active: #2E2D42,
+	btn-nav-border-color-active-dark: #2E2D42,
+	btn-nav-bg-color-active: #242731,
+	btn-nav-bg-color-active-dark: #242731,
+	btn-create-icon-color: $gray-400,
+	btn-create-icon-color-dark: $gray-600-dark,
+	btn-create-bg-color: #1E2027,
+	btn-create-bg-color-dark: #1E2027,
+	btn-create-border-color: #2E2D42,
+	form-control-color: rgba(63, 66, 84, 0.8),
+	form-control-color-dark: #2B2A37,
+	placeholder-color: $gray-700,
+	placeholder-color-dark: #6E6C81,
+	height: (
+		desktop: 180px,
+		tablet-and-mobile: 60px
+	),
+) !default;
+
+// Aside
+$aside-config: (
+	z-index: 101,
+	padding-x: 25px,
+	menu-indention: 0.75rem,
+	width: 265px
+) !default;

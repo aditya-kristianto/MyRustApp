@@ -1,0 +1,12 @@
+//
+// Sidebar
+//
+
+// Desktop mode
+@include media-breakpoint-down(lg) {
+	.app-sidebar {
+		.card {
+			border-radius: 0;
+		}
+	}
+}

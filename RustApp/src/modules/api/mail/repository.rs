@@ -1,0 +1,1 @@
+#[path = "./repositories/mail.rs"] pub mod Mail;

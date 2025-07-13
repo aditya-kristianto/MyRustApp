@@ -1,0 +1,73 @@
+//
+// Root
+//
+
+// Light mode
+@include color-mode(light) {
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg};
+
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color};
+
+    // Header
+    --#{$prefix}header-desktop-default-border: #{get($header-config, desktop, default, border)};
+    --#{$prefix}header-desktop-fixed-bg-color: #{get($header-config, desktop, fixed, bg-color)};
+    --#{$prefix}header-desktop-fixed-box-shadow: #{get($header-config, desktop, fixed, box-shadow)};
+    --#{$prefix}header-tablet-and-mobile-fixed-bg-color: #{get($header-config, tablet-and-mobile, fixed, bg-color)};
+    --#{$prefix}header-tablet-and-mobile-fixed-box-shadow: #{get($header-config, tablet-and-mobile, fixed, box-shadow)};
+
+    // Topbar
+    --#{$prefix}topbar-btn-icon-color: #{get($topbar-config, btn, icon-color)};
+    --#{$prefix}topbar-btn-icon-color-active: #{get($topbar-config, btn, icon-color-active)};
+    --#{$prefix}topbar-btn-bg-color: #{get($topbar-config, btn, bg-color)};
+    --#{$prefix}topbar-btn-bg-color-active: #{get($topbar-config, btn, bg-color-active)};
+
+    // Aside
+    --#{$prefix}aside-bg-color: #{get($aside-config, bg-color)};
+    --#{$prefix}aside-box-shadow: #{get($aside-config, box-shadow)};
+    --#{$prefix}aside-menu-icon-bg-color: #{get($aside-config, menu-icon, bg-color)};
+    --#{$prefix}aside-menu-icon-bg-color-active: #{get($aside-config, menu-icon, bg-color-active)};
+    --#{$prefix}aside-menu-icon-icon-color: #{get($aside-config, menu-icon, icon-color)};
+    --#{$prefix}aside-menu-icon-icon-color-active: #{get($aside-config, menu-icon, icon-color-active)};
+    --#{$prefix}aside-menu-icon-icon-color-hover: #{get($aside-config, menu-icon, icon-color-hover)};
+
+    // Main
+    --#{$prefix}btn-nav-border-color: #FFEB39;
+    --#{$prefix}btn-nav-bg-color: #EFD600;
+}
+
+// Dark mode
+@include color-mode(dark) {
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg-dark};
+
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color-dark};
+
+    // Header
+    --#{$prefix}header-desktop-default-border: #{get($header-config, desktop, default, border-dark)};
+    --#{$prefix}header-desktop-fixed-bg-color: #{get($header-config, desktop, fixed, bg-color-dark)};
+    --#{$prefix}header-desktop-fixed-box-shadow: #{get($header-config, desktop, fixed, box-shadow-dark)};
+    --#{$prefix}header-tablet-and-mobile-fixed-bg-color: #{get($header-config, tablet-and-mobile, fixed, bg-color-dark)};
+    --#{$prefix}header-tablet-and-mobile-fixed-box-shadow: #{get($header-config, tablet-and-mobile, fixed, box-shadow-dark)};
+
+    // Topbar
+    --#{$prefix}topbar-btn-icon-color: #{get($topbar-config, btn, icon-color-dark)};
+    --#{$prefix}topbar-btn-icon-color-active: #{get($topbar-config, btn, icon-color-active-dark)};
+    --#{$prefix}topbar-btn-bg-color: #{get($topbar-config, btn, bg-color-dark)};
+    --#{$prefix}topbar-btn-bg-color-active: #{get($topbar-config, btn, bg-color-active-dark)};   
+
+    // Aside
+    --#{$prefix}aside-bg-color: #{get($aside-config, bg-color-dark)};
+    --#{$prefix}aside-box-shadow: #{get($aside-config, box-shadow-dark)};
+    --#{$prefix}aside-menu-icon-bg-color: #{get($aside-config, menu-icon, bg-color-dark)};
+    --#{$prefix}aside-menu-icon-bg-color-active: #{get($aside-config, menu-icon, bg-color-active-dark)};
+    --#{$prefix}aside-menu-icon-icon-color: #{get($aside-config, menu-icon, icon-color-dark)};
+    --#{$prefix}aside-menu-icon-icon-color-active: #{get($aside-config, menu-icon, icon-color-active-dark)};
+    --#{$prefix}aside-menu-icon-icon-color-hover: #{get($aside-config, menu-icon, icon-color-hover-dark)};
+    
+    // Main
+    --#{$prefix}btn-nav-border-color: $gray-100-dark;
+    --#{$prefix}btn-nav-bg-color: $gray-100-dark;
+}

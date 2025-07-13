@@ -1,0 +1,264 @@
+pipeline {
+    agent {
+        label 'jenkins-agent'
+    }
+
+    environment {
+    //     // Define environment variables if needed
+    //     AWS_REGION = 'us-east-1' // Replace with your AWS region
+    //     // Credentials ID from Jenkins Credentials
+        AWS_CREDENTIALS_ID = credentials('APKAW4KRWEJLJDESTNR6')
+        AWS_REGION = 'ap-southeast-1'
+        ECR_REPO_APLINE = '473154593366.dkr.ecr.ap-southeast-1.amazonaws.com/aarch64/rust-alpine'
+        ECR_REPO_ASSET = '473154593366.dkr.ecr.ap-southeast-1.amazonaws.com/aarch64/rust-asset'
+        ECR_REPO_AUTH = '473154593366.dkr.ecr.ap-southeast-1.amazonaws.com/aarch64/rust-auth'
+        ECR_REPO_OAUTH = '473154593366.dkr.ecr.ap-southeast-1.amazonaws.com/aarch64/rust-oauth'
+        ECR_REPO_STOCK = '473154593366.dkr.ecr.ap-southeast-1.amazonaws.com/aarch64/rust-stock'
+        ECR_REPO_UUID = '473154593366.dkr.ecr.ap-southeast-1.amazonaws.com/aarch64/rust-uuid'
+        ECR_REPO_WEB = '473154593366.dkr.ecr.ap-southeast-1.amazonaws.com/aarch64/rust-web'
+    }
+
+    stages {
+        // stage('Check Disk Space') {
+        //    steps {
+        //        script {
+        //            // Correctly quote the shell command to prevent Groovy syntax errors
+        //            sh '''
+        //                sudo du -sh /* | sort -rh | head -10
+        //            '''
+        //        }
+        //    }
+        // }
+        
+        // stage('Clear Package Cache') {
+        //    steps {
+        //        script {
+        //            // Correctly quote the shell command to prevent Groovy syntax errors
+        //            sh '''
+        //                sudo yum clean all
+        //                sudo rm -rf /tmp/*
+        //            '''
+        //        }
+        //    }
+        // }
+
+        stage('Checkout') {
+            steps {
+                // Checkout from AWS CodeCommit using HTTPS
+                // Assumes that the repository URL is in the format:
+                // https://git-codecommit.<region>.amazonaws.com/v1/repos/<repo-name>
+                git url: 'ssh://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/RustApp',
+                    credentialsId: "${AWS_CREDENTIALS_ID}",
+                    branch: 'main'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                // sh 'sudo make docker-build-rust-alpine'
+                sh 'sudo make docker-build-rust-asset'
+                sh 'sudo make docker-build-rust-auth'
+                sh 'sudo make docker-build-rust-oauth'
+                sh 'sudo make docker-build-rust-stock'
+                sh 'sudo make docker-build-rust-uuid'
+                sh 'sudo make docker-build-rust-web'
+            }
+            // parallel {
+            //     // stage('Build Rust Alpine') {
+            //     //     steps {
+            //     //         sh 'sudo make docker-build-rust-alpine'
+            //     //     }
+            //     // }
+                
+            //     stage('Build Rust Asset') {
+            //         steps {
+            //             sh 'sudo make docker-build-rust-asset'
+            //         }
+            //     }
+                
+            //     stage('Build Rust Auth') {
+            //         steps {
+            //             sh 'sudo make docker-build-rust-auth'
+            //         }
+            //     }
+                
+            //     stage('Build Rust OAuth') {
+            //         steps {
+            //             sh 'sudo make docker-build-rust-oauth'
+            //         }
+            //     }
+                
+            //     stage('Build Rust Stock') {
+            //         steps {
+            //             sh 'sudo make docker-build-rust-stock'
+            //         }
+            //     }
+                
+            //     stage('Build Rust UUID') {
+            //         steps {
+            //             sh 'sudo make docker-build-rust-uuid'
+            //         }
+            //     }
+                
+            //     stage('Build Rust Web') {
+            //         steps {
+            //             sh 'sudo make docker-build-rust-web'
+            //         }
+            //     }
+            // }
+        }
+        
+        // stage('Login and Push Docker Alpine Image to ECR') {
+        //     steps {
+        //         script {
+        //             // Log in to AWS ECR using AWS credentials from Jenkins
+        //             // sh '''
+        //             // aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REPO_ALPINE}
+        //             // '''
+        //             sh 'sudo make docker-push-rust-alpine'
+        //         }
+        //     }
+        // }
+        
+        stage('Login and Push Docker Rust Asset Image to ECR') {
+            steps {
+                script {
+                    sh 'sudo make docker-push-rust-asset'
+                }
+            }
+        }
+        
+        stage('Login and Push Docker Rust Auth Image to ECR') {
+            steps {
+                script {
+                    sh 'sudo make docker-push-rust-auth'
+                }
+            }
+        }
+        
+        stage('Login and Push Docker Rust Oauth Image to ECR') {
+            steps {
+                script {
+                    sh 'sudo make docker-push-rust-oauth'
+                }
+            }
+        }
+        
+        stage('Login and Push Docker Rust Stock Image to ECR') {
+            steps {
+                script {
+                    sh 'sudo make docker-push-rust-stock'
+                }
+            }
+        }
+        
+        stage('Login and Push Docker Rust UUID Image to ECR') {
+            steps {
+                script {
+                    sh 'sudo make docker-push-rust-uuid'
+                }
+            }
+        }
+        
+        stage('Login and Push Docker Rust Web Image to ECR') {
+            steps {
+                script {
+                    sh 'sudo make docker-push-rust-web'
+                }
+            }
+        }
+        
+        // stage('Push Docker Image to ECR') {
+        //     parallel {
+        //         stage('Build Rust Alpine') {
+        //             steps {
+        //                 sh 'sudo make docker-push-rust-alpine'
+        //             }
+        //         }
+                
+        //         stage('Build Rust Asset') {
+        //             steps {
+        //                 sh 'sudo make docker-push-rust-asset'
+        //             }
+        //         }
+                
+        //         stage('Build Rust Auth') {
+        //             steps {
+        //                 sh 'sudo make docker-push-rust-auth'
+        //             }
+        //         }
+                
+        //         stage('Build Rust OAuth') {
+        //             steps {
+        //                 sh 'sudo make docker-push-rust-oauth'
+        //             }
+        //         }
+                
+        //         stage('Build Rust Stock') {
+        //             steps {
+        //                 sh 'sudo make docker-push-rust-stock'
+        //             }
+        //         }
+                
+        //         stage('Build Rust UUID') {
+        //             steps {
+        //                 sh 'sudo make docker-push-rust-uuid'
+        //             }
+        //         }
+                
+        //         stage('Build Rust Web') {
+        //             steps {
+        //                 sh 'sudo make docker-push-rust-web'
+        //             }
+        //         }
+        //     }
+        //     // steps {
+        //     //     script {
+        //     //         // Push the Docker image to ECR
+        //     //         sh "docker push ${ECR_REPO}:${IMAGE_TAG}"
+        //     //     }
+        //     // }
+        // }
+
+        stage('Docker Prune') {
+            steps {
+                script {
+                    sh '''
+                        sudo docker image prune -a -f
+                    '''
+                }
+            }
+        }
+
+        // stage('Test') {
+        //     steps {
+        //         // Run tests
+        //         // sh 'cargo test'
+        //     }
+        // }
+
+        // stage('Package') {
+        //     steps {
+        //         // Package the build artifacts if necessary
+        //         // sh 'cargo build --release'
+        //         // archiveArtifacts artifacts: 'target/release/your-binary', fingerprint: true
+        //     }
+        // }
+    }
+
+    post {
+        success {
+            echo 'Build and tests succeeded!'
+            // Add notifications or other post-build actions here
+        }
+        failure {
+            echo 'Build or tests failed.'
+            // Add failure handling, like notifications
+        }
+        always {
+            node("jenkins-agent") {
+                cleanWs()  // Cleans up the workspace after the build is complete
+            }
+        }
+    }
+}

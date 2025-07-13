@@ -1,0 +1,38 @@
+//
+// Header
+//
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+	.app-header {
+		.app-container {
+			padding-left: 0 !important;	
+		}
+
+		.app-header-logo {
+			width: $app-sidebar-base-width;
+			background-color: $app-sidebar-base-bg-color;
+			margin-right: $app-container-padding-x !important;
+		}
+	}
+}
+
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+	.app-header {
+		.app-header-wrapper {
+			display: none !important;	
+		}	
+	}
+}
+
+@include color-mode(dark) {
+	// Desktop mode
+	@include media-breakpoint-up(lg) {
+		.app-header {
+			.app-header-logo {
+				background-color: transparent;
+			}
+		}
+	}	
+}

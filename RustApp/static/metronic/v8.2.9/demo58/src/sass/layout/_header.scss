@@ -1,0 +1,30 @@
+//
+// Header
+//
+
+// General
+.app-header {
+	border-bottom: 1px solid var(--#{$prefix}gray-200);			
+}
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+	.app-header-logo {
+		width: var(--#{$prefix}app-sidebar-width);			
+	}
+
+	.app-header {
+		.app-container {
+			padding-left: 0 !important;	
+		}
+	}
+}
+
+// Tablet & mobile modes
+@include media-breakpoint-down(lg) {
+	.app-header {
+		.app-header-wrapper {
+			display: none !important;	
+		}	
+	}
+}

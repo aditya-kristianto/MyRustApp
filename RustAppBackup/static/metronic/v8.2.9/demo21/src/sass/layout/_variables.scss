@@ -1,0 +1,52 @@
+//
+// Layout Config
+//
+
+// Root font Sizes
+$root-font-size:                                    13px; // Root font size for desktop mode
+$root-font-size-lg:                             	13px; // Root font size for tablet mode
+$root-font-size-md:                             	12px; // Root font size for mobile mode
+
+// Page  background Color
+$page-bg: 											#F3F6F9;
+$page-bg-dark: 										$coal-400;
+
+// App blank bg color
+$app-blank-bg-color: 								$white;
+$app-blank-bg-color-dark: 							$coal-400; 
+
+// Content  background Color
+$content-bg: 									    #FFFFFF;
+$content-bg-dark: 									$coal-200;
+
+// Header
+$header-config: (	
+	navs-tab-bg-color: #EAEEF1,
+	navs-tab-bg-color-dark: $coal-300,
+	navs-tab-border-color: #E2E6E9,
+	navs-tab-border-color-dark: $dark-light-dark
+);
+
+// Content Spacing
+$content-spacing: (
+	desktop: 30px, // Padding for desktop mode
+	tablet-and-mobile: 15px // Padding for tablet and mobile modes
+);
+
+// Topbar
+$topbar-config: (
+	btn-color: #80808f,
+	btn-color-dark: #565674,
+
+	btn-bg-color:#eaeef1,
+	btn-bg-color-dark: #2B2B40	
+);
+
+
+// Aside
+$aside-config: (
+	z-index: 101,
+	padding-x: 1.5rem,
+	menu-indention: 0.75rem,
+	width: 265px
+);

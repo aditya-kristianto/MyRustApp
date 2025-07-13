@@ -1,0 +1,11 @@
+//
+// Card
+//
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        .card {
+            --#{$prefix}card-bg: #{$card-bg-dark};    
+        }
+    }
+}

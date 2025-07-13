@@ -1,0 +1,14 @@
+//
+// Content
+//
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+	body:not([data-kt-app-sidebar-panel-enabled="true"]) {
+		.app-content {
+			.app-container {
+				padding-left: 0 !important;	
+			}
+		}
+	}	
+}

@@ -1,0 +1,65 @@
+//
+// Root
+//
+
+// Light mode
+@include color-mode(light) {
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg};
+
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color};
+
+    // Header   
+    --#{$prefix}header-link-bg-color: #{get($header-config, link-bg-color)};  
+ 
+    // Content
+    --#{$prefix}content-bg: #{$content-bg};
+
+    // Background image
+    --#{$prefix}page-bg-image: #{$page-bg-image};
+
+    // Aside
+    --#{$prefix}aside-bg-color: #{get($aside-config, bg-color)};     
+
+    // Toolbar
+    --#{$prefix}toolbar-bg-color: #{get($toolbar-config, bg-color)};     
+
+    // Topbar
+    --#{$prefix}topbar-btn-bg-color: #{get($topbar-config, btn-bg-color)};
+    --#{$prefix}topbar-btn-bg-color-active: #{get($topbar-config, btn-bg-color-active)};
+}
+
+// Dark mode
+@include color-mode(dark) {
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg-dark};    
+
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color-dark};
+    
+     // Header     
+     --#{$prefix}header-link-bg-color: #{get($header-config, link-bg-color-dark)};
+    
+    // Content
+    --#{$prefix}content-bg: #{$content-bg-dark};
+
+    // Background image
+    --#{$prefix}page-bg-image: #{$page-bg-image-dark};
+
+    // Aside
+    --#{$prefix}aside-bg-color: #{get($aside-config, bg-color-dark)};     
+
+    // Toolbar
+    --#{$prefix}toolbar-bg-color: #{get($toolbar-config, bg-color-dark)};
+
+    // Topbar
+    --#{$prefix}topbar-btn-bg-color: #{get($topbar-config, btn-bg-color-dark)};
+    --#{$prefix}topbar-btn-bg-color-active: #{get($topbar-config, btn-bg-color-active-dark)};
+}
+
+
+ 
+    
+    
+     

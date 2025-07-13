@@ -1,0 +1,37 @@
+//
+// Root
+//
+
+// Light mode
+@include color-mode(light) {
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg};
+
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color};
+
+    // Header
+    --#{$prefix}header-bg-color: #{get($header-config, bg-color)};
+    --#{$prefix}header-box-shadow: #{get($header-config, box-shadow)};
+    --#{$prefix}header-navs-tab-color-default: #{get($header-config, navs-tab-color, default)};
+    --#{$prefix}header-navs-tab-color-hover: #{get($header-config, navs-tab-color, hover)};
+    --#{$prefix}header-navs-tab-color-active: #{get($header-config, navs-tab-color, active)};
+    --#{$prefix}header-navs-bg-color: #{get($header-config, navs-bg-color)};       
+}
+
+// Dark mode
+@include color-mode(dark) {
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg-dark};
+
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color-dark};
+
+    // Header
+    --#{$prefix}header-bg-color: #{get($header-config, bg-color-dark)};
+    --#{$prefix}header-box-shadow: #{get($header-config, box-shadow-dark)};
+    --#{$prefix}header-navs-tab-color-default: #{get($header-config, navs-tab-color, default-dark)};
+    --#{$prefix}header-navs-tab-color-hover: #{get($header-config, navs-tab-color, hover-dark)};
+    --#{$prefix}header-navs-tab-color-active: #{get($header-config, navs-tab-color, active-dark)};
+    --#{$prefix}header-navs-bg-color: #{get($header-config, navs-bg-color-dark)};       
+}

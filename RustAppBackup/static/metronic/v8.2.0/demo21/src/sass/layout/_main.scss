@@ -1,0 +1,28 @@
+//
+// Main
+//
+
+// Body
+body {
+	background-color: var(--#{$prefix}page-bg); 
+}
+
+// Font color from Content background color
+.text-page-bg {
+	color: var(--#{$prefix}page-bg);
+}
+
+.app-blank {
+	background-color: var(--#{$prefix}app-blank-bg) !important;
+}
+
+// Desktop mode
+@include media-breakpoint-up(xxl) {
+	.wrapper {
+		// Aside enabled
+		.aside-enabled & {
+			padding-left: 2.5rem;
+			padding-right: 2.5rem;
+		}
+	}		
+}

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-agent-deployment
+  namespace: jenkins  # Specify the namespace here
+  labels:
+    app: jenkins-agent
+spec:
+  replicas: 1  # Number of agent pods to run
+  selector:
+    matchLabels:
+      app: jenkins-agent
+  template:
+    metadata:
+      labels:
+        app: jenkins-agent
+    spec:
+      containers:
+      - name: jenkins-agent
+        image: jenkins/inbound-agent:3261.v9c670a_4748a_9-7-alpine3.20-jdk21
+        ports:
+        - containerPort: 8080  # Example port, adjust based on your requirements
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+        env:
+        - name: JENKINS_URL
+          value: "http://jenkins.aditya-kristianto.com/"
+        - name: JENKINS_AGENT_NAME
+          value: "agent-01"
+        - name: JAVA_OPTS
+          value: "-Dhudson.remoting.verbose=true"
+        - name: JENKINS_SECRET
+          value: "5c26cd4798ba552bfd8466dc49ed43453c26fc229748b06049b063dd13146332"

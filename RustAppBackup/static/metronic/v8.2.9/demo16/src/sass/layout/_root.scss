@@ -1,0 +1,59 @@
+//
+// Root
+//
+
+// Light mode
+@include color-mode(light) {
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg};
+
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color};
+
+    // Header   
+    --#{$prefix}header-bg-color: #{get($header-config, bg-color)};
+    --#{$prefix}header-menu-bg-color: #{get($header-config, menu-bg-color)};  
+    --#{$prefix}header-menu-link-color: #{get($header-config, menu-link-color)};  
+    --#{$prefix}header-menu-link-active-color: #{get($header-config, menu-link-active-color)};  
+    --#{$prefix}header-menu-link-active-bg-color: #{get($header-config, menu-link-active-bg-color)};
+    --#{$prefix}header-btn-nav-color: #{get($header-config, btn-nav-color)};  
+    --#{$prefix}header-btn-nav-icon-color: #{get($header-config, btn-nav-icon-color)};
+    --#{$prefix}header-btn-nav-border-color: #{get($header-config, btn-nav-border-color)};
+    --#{$prefix}header-btn-nav-border-color-active: #{get($header-config, btn-nav-border-color-active)};
+    --#{$prefix}header-btn-nav-bg-color-active: #{get($header-config, btn-nav-bg-color-active)};     
+    --#{$prefix}header-btn-create-bg-color: #{get($header-config, btn-create-bg-color)};
+    --#{$prefix}header-btn-create-border-color: #{get($header-config, btn-create-border-color)};
+    --#{$prefix}header-btn-create-icon-color: #{get($header-config, btn-create-icon-color)};
+    --#{$prefix}header-search-color: #{get($header-config, bg-color)};
+    --#{$prefix}header-form-control-color: #{get($header-config, form-control-color)};
+    --#{$prefix}header-placeholder-color: #{get($header-config, placeholder-color)};
+    --#{$prefix}header-box-shadow: #{get($header-config, box-shadow)}; 
+}
+
+// Dark mode
+@include color-mode(dark) {
+    // Page bg
+    --#{$prefix}page-bg: #{$page-bg-dark};
+
+    // App blank bg color
+    --#{$prefix}app-blank-bg: #{$app-blank-bg-color-dark};
+
+    // Header   
+    --#{$prefix}header-bg-color: #{get($header-config, bg-color-dark)};  
+    --#{$prefix}header-menu-bg-color: #{get($header-config, menu-bg-color-dark)};  
+    --#{$prefix}header-menu-link-color: #{get($header-config, menu-link-color-dark)};  
+    --#{$prefix}header-menu-link-active-color: #{get($header-config, menu-link-active-color-dark)};  
+    --#{$prefix}header-menu-link-active-bg-color: #{get($header-config, menu-link-active-bg-color-dark)};
+    --#{$prefix}header-btn-nav-color: #{get($header-config, btn-nav-color-dark)};  
+    --#{$prefix}header-btn-nav-icon-color: #{get($header-config, btn-nav-icon-color-dark)};
+    --#{$prefix}header-btn-nav-border-color: #{get($header-config, btn-nav-border-color-dark)};
+    --#{$prefix}header-btn-nav-border-color-active: #{get($header-config, btn-nav-border-color-active-dark)};
+    --#{$prefix}header-btn-nav-bg-color-active: #{get($header-config, btn-nav-bg-color-active-dark)};
+    --#{$prefix}header-btn-create-bg-color: #{get($header-config, btn-create-bg-color-dark)};
+    --#{$prefix}header-btn-create-icon-color: #{get($header-config, btn-create-icon-color-dark)};
+    --#{$prefix}header-btn-create-border-color: #{get($header-config, btn-create-border-color-dark)};
+    --#{$prefix}header-search-color: #{get($header-config, bg-color-dark)};
+    --#{$prefix}header-form-control-color: #{get($header-config, form-control-color-dark)};
+    --#{$prefix}header-placeholder-color: #{get($header-config, placeholder-color-dark)};
+    --#{$prefix}header-box-shadow: #{get($header-config, box-shadow-dark)};
+}

@@ -1,0 +1,52 @@
+//
+// Nav tabs switch
+//
+
+.nav-tabs-switch {
+	border: 1px solid $gray-200;
+	background-color: $gray-100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0px 3px;
+
+	.nav-link {
+		border-radius: 8px;
+		width: 26px;
+		height: 26px;
+		border: 1px solid transparent;
+		background-color: transparent;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&.active {
+			border-color: $gray-200;
+			background-color: $body-bg;
+			box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.03);
+			
+			i {
+				color: $gray-500;	
+			}
+		}
+	}
+}
+
+@include color-mode(dark) {
+	.nav-tabs-switch {
+		border: 1px solid $gray-200-dark;
+		background-color: $gray-100-dark;
+
+		.nav-link {
+			&.active {
+				border-color: $gray-200-dark;
+				background-color: $body-bg-dark;
+				box-shadow: none;
+				
+				i {
+					color: $gray-500-dark;	
+				}
+			}
+		}
+	}
+}

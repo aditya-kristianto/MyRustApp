@@ -1,0 +1,33 @@
+//
+// Sidebar panel
+//
+
+// General
+.app-sidebar-panel {	
+	flex-direction: column;	
+}
+
+// Desktop mode
+@include media-breakpoint-up(lg) {
+	.app-sidebar-panel {			
+		display: flex;
+		@include border-radius($card-border-radius);
+		border: 1px solid var(--#{$prefix}root-card-border-color);
+	}
+
+	.app-sidebar-panel-header {		
+		@include border-top-radius($card-border-radius);		
+	}
+} 
+
+@include color-mode(light) {
+	.app-sidebar-panel-header {	
+		background-color: $coal-400;
+	}
+}
+
+@include color-mode(dark) {
+	.app-sidebar-panel-header {	
+		background-color: $coal-600;
+	}
+}

@@ -1,0 +1,30 @@
+version: 0.2
+
+env:
+  variables:
+    BUCKET_NAME: "rust-assets-bucket"
+    BUCKET_REGION: "ap-southeast-1"
+    TEMPLATE_TYPE: "demo1"
+    
+phases:
+  post_build:
+    commands:
+      - |
+        if aws s3api head-bucket --bucket "${BUCKET_NAME}" 2>/dev/null; then
+            echo "Bucket ${BUCKET_NAME} already exists."
+            
+            if aws s3api list-objects-v2 --bucket "${BUCKET_NAME}" --max-items 1 > /dev/null 2>&1; then
+                echo "Deleting all objects in bucket ${BUCKET_NAME}..."
+                aws s3 rm s3://${BUCKET_NAME} --recursive
+            else
+                echo "No access to list objects in bucket ${BUCKET_NAME}."
+                exit 1
+            fi
+        else
+            echo "Creating bucket ${BUCKET_NAME}..."
+            aws s3api create-bucket --bucket ${BUCKET_NAME} --region "${BUCKET_REGION}" --create-bucket-configuration LocationConstraint="${BUCKET_REGION}"
+            echo "Bucket ${BUCKET_NAME} created successfully."
+        fi
+        
+        echo "Syncing files to bucket ${BUCKET_NAME}..."
+        aws s3 sync static/${TEMPLATE_TYPE}/src s3://rust-assets-bucket --exclude "*" --include "*.ico" --include "*.webp" --include "*.svg" --include "*.css" --include "*.js" --include "*.woff" --include "*.ttf"    

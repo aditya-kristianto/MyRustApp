@@ -1,0 +1,14 @@
+[Unit]
+Description=Jenkins Agent
+After=network.target
+
+[Service]
+User=jenkins
+WorkingDirectory=/home/jenkins
+ExecStart=/usr/bin/java -jar /home/jenkins/agent.jar -url http://jenkins.aditya-kristianto.com/ -secret "2aa73cd65bf851b53ad98c824d91270c1eea80b286c7a66af446683db3a4253b" -name "rust-builder-agent" -workDir "/home/jenkins"
+Restart=on-failure
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: SERVICE_NAME
+  labels:
+    name: SERVICE_NAME
+spec:
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      name: SERVICE_NAME
+  template:
+    metadata:
+      name: SERVICE_NAME
+      labels:
+        name: SERVICE_NAME
+    spec:
+      containers:
+        - name: SERVICE_NAME-container
+          image: DOCKER_IMAGE
+          resources:
+            requests:
+              cpu: 4m
+          ports:
+            - containerPort: 30001
+          env:
+            - name: SERVICE_PORT
+              value: "8080"
+            - name: SERVICE_VERSION
+              value: DOCKER_IMAGE
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: SERVICE_NAME-service
+spec:
+  type: NodePort
+  selector:
+    name: SERVICE_NAME
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30001

@@ -1,0 +1,89 @@
+Resources:
+  Distribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - aditya-kristianto.com
+          - www.aditya-kristianto.com
+        Comment: "My CloudFront Distribution"
+        DefaultCacheBehavior:
+          TargetOriginId: MyCDN
+          ViewerProtocolPolicy: redirect-to-https
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+        Enabled: true
+        Origins:
+          - DomainName: !GetAtt Bucket.RegionalDomainName
+            Id: MyCDN
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub
+                - origin-access-identity/cloudfront/${OriginAccessIdentity}
+                - OriginAccessIdentity: !Ref DistributionOriginAccessIdentity
+        ViewerCertificate:
+          AcmCertificateArn: arn:aws:acm:us-east-1:123456789012:certificate/your-certificate-id
+          SslSupportMethod: sni-only
+    DependsOn: Certificate
+  Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: rust-app-bucket-v2
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: aws:kms
+              KMSMasterKeyID: alias/aws/s3
+      PublicAccessBlockConfiguration:
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+  BucketBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref Bucket
+      PolicyDocument:
+        Id: RequireEncryptionInTransit
+        Version: '2012-10-17'
+        Statement:
+          - Principal: '*'
+            Action: '*'
+            Effect: Deny
+            Resource:
+              - !GetAtt Bucket.Arn
+              - !Sub ${Bucket.Arn}/*
+            Condition:
+              Bool:
+                aws:SecureTransport: 'false'
+    DependsOn: Bucket
+  Certificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: aditya-kristianto.com
+      ValidationMethod: DNS
+      SubjectAlternativeNames: 
+        - www.aditya-kristianto.com
+      DomainValidationOptions: 
+        - DomainName: aditya-kristianto.com
+          ValidationDomain: aditya-kristianto.com
+        - DomainName: www.aditya-kristianto.com
+          ValidationDomain: aditya-kristianto.com
+  DistributionOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: MyCDN
+  DistributionBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref Bucket
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity
+                ${DistributionOriginAccessIdentity}
+            Action: s3:GetObject
+            Resource: !Sub
+              - ${BucketArn}/*
+              - BucketArn: !GetAtt Bucket.Arn

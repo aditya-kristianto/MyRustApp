@@ -1,0 +1,5 @@
+project:
+  name: Rust
+  tz: Asia/Jakarta
+  adrFolder: ./docs/adr
+  packages: []

@@ -1,0 +1,19 @@
+//
+// Root
+//
+
+@include color-mode(light) {
+    // Separator
+    --#{$prefix}app-separator-border: #{$app-separator-border};
+
+    // Content
+    --#{$prefix}app-content-bg-color: #{$app-content-bg-color};
+}
+
+@include color-mode(dark) {
+	// Separator
+    --#{$prefix}app-separator-border: #{$app-separator-border-dark};
+
+    // Content
+    --#{$prefix}app-content-bg-color: #{$app-content-bg-color-dark};
+}

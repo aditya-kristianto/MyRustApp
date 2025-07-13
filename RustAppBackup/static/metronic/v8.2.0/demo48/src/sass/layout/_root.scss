@@ -1,0 +1,23 @@
+//
+// Root
+//
+
+// Light mode
+@include color-mode(light) {
+    // Header primary
+    --#{$prefix}app-header-primary-search-bg-color: #{$app-header-primary-base-search-bg-color};
+    --#{$prefix}app-header-primary-custom-btn-bg-color: #{$app-header-primary-base-custom-btn-bg-color};  
+   
+    // Content
+    --#{$prefix}app-content-bg-color: #{$app-content-base-bg-color};  
+}
+
+// Dark mode
+@include color-mode(dark) {
+    // Header primary
+    --#{$prefix}app-header-primary-search-bg-color: #{$app-header-primary-base-search-bg-color-dark};
+    --#{$prefix}app-header-primary-custom-btn-bg-color: #{$app-header-primary-base-custom-btn-bg-color-dark};	
+    
+    // Content
+    --#{$prefix}app-content-bg-color: #{$app-content-base-bg-color-dark};  
+} 

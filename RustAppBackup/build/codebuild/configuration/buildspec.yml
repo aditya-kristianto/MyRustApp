@@ -1,0 +1,55 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 27
+    commands:
+      - echo Install docker buildx...
+      - export DOCKER_BUILDKIT=0
+  pre_build:
+    commands:
+      - echo Linux version...
+      - make check-linux-version
+      - echo "Start the Docker daemon in the background..."
+      - dockerd & # Start the Docker daemon in the background
+      - sleep 20  # Wait for Docker daemon to start
+      - echo Docker version...
+      - make docker-version
+      - docker info
+      - echo Curl version
+      - curl --version
+      #      - echo Docker buildx version...
+      #      - make docker-buildx-version
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
+      - echo Check is repository exist in Amazon ECR...
+      - aws ecr describe-repositories --repository-name ${IMAGE_NAME} || aws ecr create-repository --repository-name ${IMAGE_NAME}
+    #   - echo Setup environment variables...
+    #   - echo APP_NAME=${APP_NAME} >> .env
+    #   - echo APP_VERSION=${APP_VERSION} >> .env
+    #   - echo APP_HOST=${APP_HOST} >> .env
+    #   - echo APP_PORT=${APP_PORT} >> .env
+    #   - echo APP_ENV=${APP_ENV} >> .env
+    #   - echo GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID} >> .env
+    #   - echo GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET} >> .env
+    #   - echo KAFKA_BROKER=${KAFKA_BROKER} >> .env
+    #   - echo KAFKA_TOPIC=${KAFKA_TOPIC} >> .env
+    #   - echo MONGODB_URI=${MONGODB_URI} >> .env
+    #   - echo MONGODB_USERNAME=${MONGODB_USERNAME} >> .env
+    #   - echo MONGODB_PASSWORD=${MONGODB_PASSWORD} >> .env
+    #   - echo MONGODB_DATABASE=${MONGODB_DATABASE} >> .env
+    #   - echo RUST_BACKTRACE=${RUST_BACKTRACE} >> .env
+    #   - echo TEMPLATE_TYPE=${TEMPLATE_TYPE} >> .env
+  build:
+    commands:
+      - echo Build started on $(date '+%Y-%m-%d %H:%M:%S')
+      - echo Building the Docker image...
+      - make cloudbuild-docker-${BIN}-build
+  post_build:
+    commands:
+      - echo Build completed on $(date '+%Y-%m-%d %H:%M:%S')
+      # - echo Pushing the Docker image...
+      # - make cloudbuild-docker-${BIN}-push
+      - echo Remove images except for the latest N...
+      - make cloudbuild-ecr-remove-${BIN}-images
