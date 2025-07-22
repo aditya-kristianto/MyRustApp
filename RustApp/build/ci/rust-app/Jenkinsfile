@@ -7,7 +7,7 @@ pipeline {
     //     // Define environment variables if needed
     //     AWS_REGION = 'us-east-1' // Replace with your AWS region
     //     // Credentials ID from Jenkins Credentials
-        AWS_CREDENTIALS_ID = credentials('APKAW4KRWEJLJDESTNR6')
+        AWS_CREDENTIALS_ID = credentials('')
         AWS_REGION = 'ap-southeast-1'
         ECR_REPO_APLINE = '473154593366.dkr.ecr.ap-southeast-1.amazonaws.com/aarch64/rust-alpine'
         ECR_REPO_ASSET = '473154593366.dkr.ecr.ap-southeast-1.amazonaws.com/aarch64/rust-asset'
