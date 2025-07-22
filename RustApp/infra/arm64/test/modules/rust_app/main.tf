@@ -23,8 +23,8 @@ resource "aws_instance" "rust_app" {
               systemctl start docker
               systemctl enable docker  # Enable Docker to start on boot
               
-              aws configure set aws_access_key_id AKIAW4KRWEJLMXNKNYVW --profile terraform && \
-              aws configure set aws_secret_access_key 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 --profile terraform && \
+              aws configure set aws_access_key_id "" --profile terraform && \
+              aws configure set aws_secret_access_key "" --profile terraform && \
               aws configure set region ap-southeast-1 --profile terraform && \
               aws configure set output json --profile terraform
               
