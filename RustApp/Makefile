@@ -178,8 +178,8 @@ RED='\033[0;31m'
 # Reset color
 NC='\033[0m'
 
-export AWS_ACCESS_KEY_ID=AKIAW4KRWEJLKU4KF76V
-export AWS_SECRET_ACCESS_KEY=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
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
 
 define cargo-check
 	cargo check
